@@ -20,7 +20,28 @@ sudo service docker start
 sudo docker run hello-world
 
 sudo docker pull kaggle/python
-sudo docker run -w=/tmp/ -p 8888:8888 --rm -it kaggle/python jupyter notebook --no-browser --ip="\*" --notebook-dir=/tmp/
+
+echo " ----------- Installation Completed ----------- "
+
+echo " ----------- Running docker machine ----------- "
+
+sudo mkdir /home/py
+sudo docker run  -p 8888:8888 -v /home/py:/home -d kaggle/python /bin/bash -c "jupyter notebook --notebook-dir=/home --ip='*' --port=8888 --no-browser"
+#sudo docker run  -p 8888:8888 -d kaggle/python -v /home/py /bin/bash -c "mkdir py && jupyter notebook --notebook-dir=/tmp --ip='*' --port=8888 --no-browser"
+
+#
+#sudo docker run  -p 8888:8888 -it kaggle/python /bin/bash -c "jupyter notebook --notebook-dir=/home --ip='*' --port=8888 --no-browser"
+#sudo docker run  -p 8888:8888 -it kaggle/python jupyter notebook --notebook-dir=/home --ip='*' --port=8888 --no-browser >> /home/logs.txt 2>&1 &
+
+echo " ----------- finished ----------- "
+
+#sudo docker run  -p 8888:8888 -it kaggle/python
+#jupyter notebook --notebook-dir=/home --ip='*' --port=8888 --no-browser >> logs.txt 2>&1 &
+
+
+
+#sudo docker run -w=/tmp/ -p 8888:8888 --rm -it kaggle/python jupyter notebook --no-browser --ip="\*" --notebook-dir=/tmp/
+
 #sudo docker run -it kaggle/python /bin/bash
 #sudo jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --port=8888 --no-browser
 

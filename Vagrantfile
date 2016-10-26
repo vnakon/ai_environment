@@ -12,15 +12,16 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
+  
   config.vm.box = "ubuntu/trusty64"
-  config.vm.boot_timeout = 1000
+  #config.vm.boot_timeout = 1000
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
   # config.vm.box_check_update = false
 
-  config.vm.define :ai_env do |t|
+  config.vm.define :ai_plant do |t|
   end
 
   # Create a forwarded port mapping which allows access to a specific port
@@ -31,8 +32,8 @@ Vagrant.configure(2) do |config|
 
 
   
-  config.vm.network "forwarded_port", guest: 80, host: 7082
-  config.vm.network "forwarded_port", guest: 8080, host: 7081
+  config.vm.network "forwarded_port", guest: 80, host: 7081
+  config.vm.network "forwarded_port", guest: 8080, host: 7087
   config.vm.network "forwarded_port", guest: 8888, host: 8889
 
 
